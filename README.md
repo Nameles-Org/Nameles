@@ -20,9 +20,9 @@ For a high level overview you might want to check out the [website](http://namel
 
 [Install Nameles](#install)
 
-    [Single Machine Deployment](#single)
+   [Single Machine Deployment](#single)
 
-    [Multi Machine Deployment](#multi)
+   [Multi Machine Deployment](#multi)
 
 [Using Nameles](#using)
 
