@@ -16,15 +16,15 @@ For a high level overview you might want to check out the [website](http://namel
 
 [System Overview](#before)
 
-[Before Deployment](#before)
+1. [Before Deployment](#before)
 
-[Install Nameles](#install)
+2. [Install Nameles](#install)
 
-   [Single Machine Deployment](#single)
+    2.1. [Single Machine Deployment](#single)
 
-   [Multi Machine Deployment](#multi)
+    2.2. [Multi Machine Deployment](#multi)
 
-[Using Nameles](#using)
+3. [Using Nameles](#using)
 
 ## Detection Capability <a name="capability"></a>
 
