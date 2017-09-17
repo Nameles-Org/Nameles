@@ -1,6 +1,6 @@
-# Nameles | Open Source Invalid Traffic Detection
-
 <img width='340px' src='https://i.imgur.com/Y7LOWbg.png'>
+
+# Nameles | Open Source Invalid Traffic Detection
 
 ## Background
 
