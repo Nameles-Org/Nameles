@@ -41,6 +41,10 @@ There are two options provided for deployment:
 For running the complete nameles system from the same `docker-compose.yml` file.
 Use as a template the `nameles-docker-compose.yml` file:
 ```bash
+# get the docker compose file 
+wget https://raw.githubusercontent.com/Nameles-Org/Nameles-streaming/master/nameles-docker-compose.yml
+
+# execute compose
 sudo docker-compose -f nameles-docker-compose.yml up
 ```
 
