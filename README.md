@@ -44,7 +44,7 @@ There are two options provided for deployment:
 - 2.1. single machine deployment
 - 2.2. multiple machine deployment (recommended for high performance)
 
-### 2.1 Single Machine System
+### 2.1 Single Machine Deployment
 
 For running the complete nameles system from the same `docker-compose.yml` file.
 Use as a template the `nameles-docker-compose.yml` file:
@@ -56,7 +56,7 @@ wget https://raw.githubusercontent.com/Nameles-Org/Nameles-streaming/master/name
 sudo docker-compose -f nameles-docker-compose.yml up
 ```
 
-## 2.2 Multiple Machine System
+## 2.2 Multiple Machine Deployment
 
 2.2.1. Create the nameles-net network in docker:
   ```bash
