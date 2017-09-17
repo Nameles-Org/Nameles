@@ -46,12 +46,12 @@ sudo docker-compose -f nameles-docker-compose.yml up
 
 ## 2.2 Multiple Machine System
 
-1. Create the nameles-net network in docker:
+2.2.1. Create the nameles-net network in docker:
   ```bash
   docker network create --subnet 172.20.0.0/24 --gateway 172.20.0.1 nameles-net
   ```
 
-2. Run docker-compose for the three nameles modules in the following order:
+2.2.2. Run docker-compose for the three nameles modules in the following order:
   1. data-processing-module
   2. scoring-module
   3. dsp-emulator
@@ -60,7 +60,7 @@ sudo docker-compose -f nameles-docker-compose.yml up
   sudo docker-compose -f <module-path>/docker-compose.yml up --force-recreate
 ```
 
-3. Check the proper working of the system accessing to the database from the host
+2.2.3. Check the proper working of the system accessing to the database from the host
 
   ```bash
   psql -h 127.0.0.1 -p 5430 -U nameles
@@ -71,6 +71,7 @@ sudo docker-compose -f nameles-docker-compose.yml up
   ```bash
   sudo apt-get install postgresql-client
   ```
-## How to Use
+
+## 3. Using Nameles
 
 The [dsp-emulator module](https://github.com/Nameles-Org/dsp-emulator) can be used as an example for interfacing Nameles from your infrastructure, i.e. message formatting and zeromq port bindings. The [latency test](https://github.com/Nameles-Org/dsp-emulator/blob/master/src/dsp_latency_test.cpp) source code is implemented in C++ but a different language for which zeromq is available could be used.
