@@ -18,6 +18,14 @@ Nameles can detectn invalid traffic on:
 - mobile and desktop 
 - display, video, and in-app
 
+## Detection Method 
+
+Nameles implements a highly scalable entropy measurement using Shannon entropy of the IP addresses a given site is receiving traffic from, and then assigns a normalized score to the site based on its traffic pattern.
+
+<img src='http://nameles.org/wp-content/uploads/2016/12/Screen-Shot-2017-01-16-at-10.34.28.png'>
+
+Entropy have been used widely in finance, intelligence, and other fields where dealing with vast amounts of data and many unknowns characterize the problem. 
+
 ## System Overview
 
 Nameles consist of two separate modules 
