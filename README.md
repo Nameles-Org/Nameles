@@ -7,6 +7,8 @@
 
 Nameles provides an easy to deploy, scalable IVT detection and filtering solution that is proven to detect at a high level of accuracy ad fraud and other types of invalid traffic such as web scraping. 
 
+For a high level overview you might want to check out the [website](http://namel.es)
+
 ## Detection Capability 
 
 While absolute measurement of detection capability is impossible, Nameles is the only detection solution that can be audited by indepedent parties and that is backed by several scientfic papers. 
