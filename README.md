@@ -5,13 +5,13 @@
 
 Nameles consists of two modules: the [scoring-module](https://github.com/Nameles-Org/scoring-module) and the [data-processing-module](https://github.com/Nameles-Org/data-processing-module). The scoring-module replies to the query messages sent by DSP with the confidence score of the domain and the category in which the domain falls, based on the statistical thresholds of outlierness. In addition, the scoring-module forwards the messages to the data-processing-module for updating the scores at the end of the day. Both modules intercommunicate with between them using [zeromq](http://zeromq.org).
 
-## Before deployment
+## 1. Before deployment
 
 The [scoring-module](https://github.com/Nameles-Org/scoring-module) runs several worker threads that pull the queries from the DSP end and push the reply messages. The workers perform a single lookup in a shared hash table for each message. Therefore, the host running the scoring-module module requires minimal memory and drive. We recommend setting a worker per CPU and running latency tests with your expected throughtput load in order to dimensionate an appropriate number of processors for the host. Note that you can run several scoring modules in your system communicating with the same data processing module.
 
 The data-processing-module performs precomputations with the stream of data received from the scoring module. The data is periodically serialized to a [PostgreSQL](https://www.postgresql.org) database. The scores are computed at the end of each day. The host of this module would benefit from having a high amount of RAM and a certain number of processors in order to reduce the score computation times. We recommend at least 64GB of RAM and 4 cores.
 
-### Install docker
+### 1.1. Install docker
 
 Docker is needed for deploying Nameles from the [pre-built docker images](https://hub.docker.com/u/apastor). We recommend using docker-compose for configuring the variables for each module as the messaging ports and number of workers.
 
@@ -29,9 +29,14 @@ docker run hello-world
 docker-compose --version
 ```
 
-## Running nameles with docker-compose
+## 2. Install Nameles Using Docker Compose
 
-### The complete system in the same compose
+There are two options provided for deployment: 
+
+- 2.1. single machine deployment
+- 2.2. multiple machine deployment (recommended for high performance)
+
+### 2.1 Single Machine System
 
 For running the complete nameles system from the same `docker-compose.yml` file.
 Use as a template the `nameles-docker-compose.yml` file:
@@ -39,7 +44,7 @@ Use as a template the `nameles-docker-compose.yml` file:
 sudo docker-compose -f nameles-docker-compose.yml up
 ```
 
-## Each container from different compose files
+## 2.2 Multiple Machine System
 
 1. Create the nameles-net network in docker:
   ```bash
