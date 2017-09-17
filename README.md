@@ -1,5 +1,8 @@
 # Nameles | Open Source Invalid Traffic Detection
 
+
+<img width='340px' src='https://i.imgur.com/Y7LOWbg.png'>
+
 ## Background
 
 Nameles provides an easy to deploy, scalable IVT detection and filtering solution that is proven to detect at a high level of accuracy ad fraud and other types of invalid traffic such as web scraping. 
