@@ -15,7 +15,7 @@ The data-processing-module performs precomputations with the stream of data rece
 
 Docker is needed for deploying Nameles from the [pre-built docker images](https://hub.docker.com/u/apastor). We recommend using docker-compose for configuring the variables for each module as the messaging ports and number of workers.
 
-1. Install [docker-ce](https://docs.docker.com/engine/installation/#server) for your linux distribution following the instructions of the official documentantion. Then, add your linux user to the docker group for being able to run docker commands without root privileges.
+1.1.1. Install [docker-ce](https://docs.docker.com/engine/installation/#server) for your linux distribution following the instructions of the official documentantion. Then, add your linux user to the docker group for being able to run docker commands without root privileges.
 
 ```bash
 sudo usermod -aG docker $USER
@@ -24,10 +24,18 @@ Test the installation running the hello-world docker image.
 ```bash
 docker run hello-world
 ```
-2. Install [docker-compose](https://docs.docker.com/compose/install)
+1.1.2. Install [docker-compose](https://docs.docker.com/compose/install)
 ```bash
 docker-compose --version
 ```
+
+### 1.2. Install PSQL 
+
+In Debian/Ubuntu systems you need the postgresql-client package:
+```bash
+sudo apt-get install postgresql-client
+```
+
 
 ## 2. Install Nameles Using Docker Compose
 
@@ -70,11 +78,7 @@ sudo docker-compose -f nameles-docker-compose.yml up
   psql -h 127.0.0.1 -p 5430 -U nameles
   ```
 
-  Note that for this last step you need to have installed the postgreSQL client.
-  In Debian/Ubuntu systems you need the postgresql-client package:
-  ```bash
-  sudo apt-get install postgresql-client
-  ```
+NOTE: you need to have installed the postgreSQL client as detailed in section 1.2
 
 ## 3. Using Nameles
 
