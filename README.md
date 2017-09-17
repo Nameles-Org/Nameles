@@ -24,7 +24,7 @@ Nameles implements a highly scalable entropy measurement using Shannon entropy o
 
 <img width='200px' src='http://nameles.org/wp-content/uploads/2016/12/Screen-Shot-2017-01-16-at-10.34.28.png'>
 
-Entropy have been used widely in finance, intelligence, and other fields where dealing with vast amounts of data and many unknowns characterize the problem. The use of Shannon entropy has been covered in hundreds of scientific papers, and some argue that it was the method Alan Turing used as the basis for his contraption that cracked the Nazi code. 
+Entropy have been used widely in finance, intelligence, and other fields where dealing with vast amounts of data and many unknowns characterize the problem. The use of Shannon entropy has been covered in hundreds of scientific papers. Some argue that Shannon received it from Alan Turning himself, and that it was the method Turing used for cracking the Nazi code.
 
 ## System Overview
 
