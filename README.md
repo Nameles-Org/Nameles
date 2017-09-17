@@ -1,7 +1,16 @@
-# Nameles-streaming
+# Nameles | Open Source Invalid Traffic Detection
 
- The real-time version of highly scalable IVT detection and filtering solution. This repository holds documentation and example files.
+## Background
 
+Nameles provides an easy to deploy, scalable IVT detection and filtering solution that is proven to detect at a high level of accuracy ad fraud and other types of invalid traffic such as web scraping. 
+
+## Detection Capability 
+
+- mobile and desktop 
+- display, video, and in-app
+- ad fraud, web scraping and other forms of invalid traffic
+
+## System Overview
 
 Nameles consists of two modules: the [scoring-module](https://github.com/Nameles-Org/scoring-module) and the [data-processing-module](https://github.com/Nameles-Org/data-processing-module). The scoring-module replies to the query messages sent by DSP with the confidence score of the domain and the category in which the domain falls, based on the statistical thresholds of outlierness. In addition, the scoring-module forwards the messages to the data-processing-module for updating the scores at the end of the day. Both modules intercommunicate with between them using [zeromq](http://zeromq.org).
 
