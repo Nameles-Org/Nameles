@@ -136,30 +136,31 @@ NOTE: The setup process starts by uninstalling older versions of Docker. If you 
 
 ## 2.2 Multiple Machine Deployment <a name="multi"></a>
 
+NOTE: You will need three separate machines to implement the multi machine deployment. 
+
 #### 2.2.1. Create the nameles-net network in docker:
   
   ```bash
   docker network create --subnet 172.20.0.0/24 --gateway 172.20.0.1 nameles-net
   ```
 
-#### 2.2.2. Run docker-compose for the three nameles modules in the following order:
-  
-**data-processing-module**
+#### 2.2.2. Setting Up Individual Modules 
 
-  ```bash
-  sudo docker-compose -f <module-path>/docker-compose.yml up --force-recreate
-```
-**scoring-module**
+NOTE: You have to setup the modules in the following order.
 
-  ```bash
-  sudo docker-compose -f <module-path>/docker-compose.yml up --force-recreate
-```
+**1. data-processing-module**
+**2. scoring-module**
+**3. dsp-emulator**
 
-**dsp-emulator**
+You can do it with: 
 
-  ```bash
-  sudo docker-compose -f <module-path>/docker-compose.yml up --force-recreate
-```
+    # download the setup script
+    wget https://raw.githubusercontent.com/Nameles-Org/Nameles/master/setup
+    
+    # run the setup script
+    ./setup
+   
+When prompted at the beginning of the setup process, make sure to choose the respect install mode for each module/machine pairing.
 
 #### 2.2.3. Check the proper working of the system accessing to the database from the host
 
