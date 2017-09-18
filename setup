@@ -28,7 +28,7 @@ if [ "$MODE" == single ]; then
 fi
 # get the docker compose file for multi
 
-if [ "$MODE" == multi ];
+if [ "$MODE" == multi ]; then
 
     wget https://raw.githubusercontent.com/Nameles-Org/data-processing-module/master/docker-compose.yml
     mv docker-compose.yml ~/Nameles/data-docker-compose.yml
