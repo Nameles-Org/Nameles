@@ -117,12 +117,12 @@ Depencies will be taken care by the setup script, so you should not have to worr
 
 ## 2. Install Nameles <a name="install"></a>
 
-There easiest way to install Nameless is on a single machine using as the instructions on section 2.1 below.
+You can install Nameless on a single machine or a cluster of multiple machines following the instructions on section 2.1 below. There are two options:
 
-- single configuration on a single machine
-- multiple configuration on a single machine
+- single configuration deployment
+- multiple configuration deployment
 
-There is an experimental option, where you can configure a docker cluster in a way where you follow the 2.1. install procedure, and then allocate resources within the docker cluster per service/module. 
+If you install Nameles on a multiple machine docker cluster/swarm, then you have two options: a) where you let docker allocate resources per service b) where you allocate reseources yourself.
 
 ### 2.1 Installation with Setup Script <a name="single"></a>
 
@@ -139,6 +139,8 @@ For running Nameles on a single server on an Ubuntu or Debian system:
 
 
 ## 2.3. Test Installation
+
+You will have to create another shell, as in the shell where you run the setup now you will have a running docker instance.
 
   ```bash
   psql -h 127.0.0.1 -p 5430 -U nameles
