@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e;
+
 clear
 
 mkdir ~/Nameles/
@@ -123,12 +125,10 @@ fi
 
 if [ "$MODE" == multi ]; then 
 
-    echo " "
-    echo -e "Run the following commands in this order in separate shells:"
-    echo -e "------------------------------------------------------------"
-    echo -e "   sudo docker-compose -f ~/Nameles/data-docker-compose.yml up"
-    echo -e "   sudo docker-compose -f ~/Nameles/scoring-docker-compose.yml up"
-    echo -e "   sudo docker-compose -f ~/Nameles/emulator-docker-compose.yml up"
-    echo -e " "
+    nohup docker-compose -f ./data-processing-module/docker-compose.yml up >> data.out 2>> data.err &
+    sleep 30
+    nohup docker-compose -f ./scoring-module/docker-compose.yml up >> scoring.out 2>> scoring.err &
+    nohup docker-compose -f ./dsp-emulator/docker-compose.yml up >> dsp.out 2>> dsp.err &
 
 fi
+
