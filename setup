@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e;
-
 clear
 
 mkdir ~/Nameles/
@@ -48,7 +46,7 @@ clear
 
 echo " "
 # getting the user choice for type of installation
-read -p " REMOVING OLD VERSION OF DOCKER: This is recommended, are you ok with it? : " yn
+read -p " REMOVING OLD VERSION OF DOCKER: This is recommended, are you ok with it (y/n)? : " yn
 case $yn in
     [Yy]* ) sudo apt-get -qq remove docker docker-engine docker.io -y;;
     [Nn]* ) echo "Ok, we're keeping your current docker version. Let's see how it goes.";;
