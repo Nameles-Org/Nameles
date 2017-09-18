@@ -20,7 +20,7 @@ before_install:
   - sudo chmod +x /usr/local/bin/docker-compose
   - sudo usermod -aG docker $USER
   - sudo apt-get install postgresql-client
-  - wget https://raw.githubusercontent.com/Nameles-Org/Nameles/master/nameles-docker-compose.yml
+  - wget https://raw.githubusercontent.com/Nameles-Org/Nameles/master/docker-compose.yml
 
 
 # command to install dependencies
