@@ -142,15 +142,15 @@ There are two options provided for deployment:
 
 ### 2.1 Single Machine Deployment <a name="single"></a>
 
-For running the complete nameles system from the same `docker-compose.yml` file.
-Use as a template the `nameles-docker-compose.yml` file:
-```bash
-# get the docker compose file 
-wget https://raw.githubusercontent.com/Nameles-Org/Nameles-streaming/master/nameles-docker-compose.yml
+For running Nameles on a single server on an Ubuntu or Debian system:
 
-# execute compose
-sudo docker-compose -f nameles-docker-compose.yml up
-```
+    # download the setup script
+    wget https://raw.githubusercontent.com/Nameles-Org/Nameles/master/setup
+    
+    # run the setup script
+    ./setup
+
+NOTE: The setup process starts by uninstalling older versions of Docker. If you don't want to do this for some reason, see the setup script as a reference for manual installation. 
 
 ## 2.2 Multiple Machine Deployment <a name="multi"></a>
 
