@@ -117,12 +117,14 @@ Depencies will be taken care by the setup script, so you should not have to worr
 
 ## 2. Install Nameles <a name="install"></a>
 
-There are two options provided for deployment: 
+There are two tested options provided for deployment: 
 
-- 2.1. single machine deployment
-- 2.2. multiple machine deployment (recommended for high performance)
+- 2.1. easy-install on a single machine
+- 2.2. install on multiple machines (recommended for high performance)
 
-### 2.1 Single Machine Deployment <a name="single"></a>
+There is an experimental option, where you can configure a docker cluster in a way where you follow the 2.1. install procedure, and then allocate resources within the docker cluster per service/module. 
+
+### 2.1 Easy-install on a single machine <a name="single"></a>
 
 For running Nameles on a single server on an Ubuntu or Debian system:
 
@@ -137,11 +139,13 @@ For running Nameles on a single server on an Ubuntu or Debian system:
 
 NOTE: The setup process starts by uninstalling older versions of Docker. If you don't want to do this for some reason, see the setup script as a reference for manual installation. 
 
-## 2.2 Multiple Machine Deployment <a name="multi"></a>
+## 2.2 Install on Multiple Machines <a name="multi"></a>
 
-NOTE: You will need three separate machines to implement the multi machine deployment. 
+For this installation option, you need to first have a running docker cluster, otherwise you'll have to make some extra configurations later. The tested installation process is provided for a situation where a docker cluster is already running.
 
-#### 2.2.1. Create the nameles-net network in docker:
+#### 2.2.1. Create the nameles-net network
+
+Access your docker cluster (swarm)
   
   ```bash
   docker network create --subnet 172.20.0.0/24 --gateway 172.20.0.1 nameles-net
