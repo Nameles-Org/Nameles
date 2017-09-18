@@ -103,7 +103,9 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo usermod -aG docker $USER
 
 # test that docker works ok
-docker run hello-world
+docker run hello-world > docker.temp
+head -3 docker.temp
+rm docker.temp
 
 # verify the docker-compose version 
 docker-compose --version
@@ -124,8 +126,9 @@ if [ "$MODE" == multi ]; then
     echo " "
     echo -e "Run the following commands in this order in separate shells:"
     echo -e "------------------------------------------------------------"
-    echo -e "$   sudo docker-compose -f ~/Nameles/data-docker-compose.yml up"
-    echo -e "$   sudo docker-compose -f ~/Nameles/scoring-docker-compose.yml up"
-    echo -e "$   sudo docker-compose -f ~/Nameles/emulator-docker-compose.yml up"
+    echo -e "   sudo docker-compose -f ~/Nameles/data-docker-compose.yml up"
+    echo -e "   sudo docker-compose -f ~/Nameles/scoring-docker-compose.yml up"
+    echo -e "   sudo docker-compose -f ~/Nameles/emulator-docker-compose.yml up"
+    echo -e " "
 
 fi
