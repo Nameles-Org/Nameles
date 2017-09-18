@@ -30,7 +30,7 @@ For a high level overview you might want to check out the [website](http://namel
 
 While absolute measurement of detection capability is impossible, Nameles is the only detection solution that can be audited by indepedent parties and that is backed by several scientfic papers. 
 
-Nameles can detectn invalid traffic on:
+Nameles can detect invalid traffic on:
 
 - mobile and desktop 
 - display, video, and in-app
