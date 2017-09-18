@@ -55,6 +55,9 @@ docker run hello-world
 # verify the docker-compose version 
 docker-compose --version
 
+# install psql 
+sudo apt-get install postgresql-client
+
 # get the docker compose file 
 wget https://raw.githubusercontent.com/Nameles-Org/Nameles-streaming/master/nameles-docker-compose.yml
 
