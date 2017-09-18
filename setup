@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # getting the user choice for type of installation
 echo -e "+---------------------------------+"
 echo -e "| Welcome to Nameles Installation |"
