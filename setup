@@ -131,4 +131,3 @@ if [ "$MODE" == multi ]; then
     nohup docker-compose -f ./dsp-emulator/docker-compose.yml up >> dsp.out 2>> dsp.err &
 
 fi
-
