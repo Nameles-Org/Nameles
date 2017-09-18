@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # getting the user choice for type of installation
 echo -e "+---------------------------------+"
 echo -e "| Welcome to Nameles Installation |"
@@ -14,6 +16,8 @@ case $CHOICE in
     * ) echo "You did not make an accepted choice";;
 esac
 
+clear
+
 echo " "
 # getting the user choice for type of installation
 read -p "REMOVING OLD VERSION OF DOCKER: This is recommended, are you ok with it? : " yn
@@ -22,6 +26,8 @@ case $yn in
     [Nn]* ) echo "Ok, we're keeping your current docker version. Let's see how it goes.";;
     * ) echo "Please choose Yy or Nn";;
 esac
+
+clear
 
 echo ""
 echo -e "Starting installation, please wait. This should be over in a few minutes."
