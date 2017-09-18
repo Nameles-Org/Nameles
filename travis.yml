@@ -1,0 +1,34 @@
+# install system package
+
+dist: trusty
+sudo: required
+
+before_install:
+  - sudo apt-get -qq update -y
+  - sudo apt-get install linux-image-extra-$(uname -r) -y
+  - sudo apt-get install linux-image-extra-virtual -y
+  - sudo apt-get update -y
+  - sudo apt-get install apt-transport-https -y 
+  - sudo apt-get install ca-certificates -y
+  - sudo apt-get install curl -y
+  - sudo apt-get install software-properties-common -y
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository \
+     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+     $(lsb_release -cs) \
+     stable"
+  - sudo apt-get update -y
+  - sudo apt-get install docker-ce -y
+  - sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+  - sudo chmod +x /usr/local/bin/docker-compose
+  - sudo chmod +x /usr/local/bin/docker-
+  - sudo usermod -aG docker $USER
+  - sudo apt-get install postgresql-client
+  - wget https://raw.githubusercontent.com/Nameles-Org/Nameles/master/nameles-docker-compose.yml
+
+
+# command to install dependencies
+install: 
+  - docker run hello-world
+  - docker-compose --version
+  - sudo docker-compose -f docker-compose.yml up

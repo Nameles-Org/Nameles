@@ -7,7 +7,7 @@ echo -e "+---------------------------------+"
 echo -e
 read -p "INSTALLATION MODE: 'single', 'scoring', 'processing', or 'emulator'  : " CHOICE
 case $CHOICE in
-    [single]* ) echo -e "\n Deploying single-system \n"; MODE=(Nameles/master/nameles-docker-compose.yml);;
+    [single]* ) echo -e "\n Deploying single-system \n"; MODE=(Nameles/master/docker-compose.yml);;
     [scoring]* ) echo -e "\n Deploying single-system \n"; MODE=(scoring-module/master/docker-compose.yml);;
     [processing]* ) echo -e "\n Deploying single-system \n"; MODE=(data-processing-module/master/docker-compose.yml);;
     [emulator]* ) echo -e "\n Deploying single-system \n"; MODE=(dsp-emulator/master/docker-compose.yml);;
