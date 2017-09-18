@@ -129,6 +129,9 @@ For running Nameles on a single server on an Ubuntu or Debian system:
     # download the setup script
     wget https://raw.githubusercontent.com/Nameles-Org/Nameles/master/setup
     
+    # change the permissions
+    chmod +x setup
+    
     # run the setup script
     ./setup
 
@@ -156,6 +159,9 @@ You can do it with:
 
     # download the setup script
     wget https://raw.githubusercontent.com/Nameles-Org/Nameles/master/setup
+    
+    # change the permissions
+    chmod +x setup
     
     # run the setup script
     ./setup
