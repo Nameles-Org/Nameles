@@ -1,0 +1,91 @@
+#!/bin/bash
+
+
+# getting the user choice for type of installation
+echo -e "+---------------------------------+"
+echo -e "| Welcome to Nameles Installation |"
+echo -e "+---------------------------------+"
+echo -e
+read -p "INSTALLATION MODE: 'single', 'scoring', 'processing', or 'emulator'  : " CHOICE
+case $CHOICE in
+    [single]* ) echo -e "\n Deploying single-system \n"; MODE=(Nameles/master/docker-compose.yml);;
+    [scoring]* ) echo -e "\n Deploying single-system \n"; MODE=(scoring-module/master/docker-compose.yml);;
+    [processing]* ) echo -e "\n Deploying single-system \n"; MODE=(data-processing-module/master/docker-compose.yml);;
+    [emulator]* ) echo -e "\n Deploying single-system \n"; MODE=(dsp-emulator/master/docker-compose.yml);;
+    * ) echo "You did not make an accepted choice";;
+esac
+
+echo " "
+# getting the user choice for type of installation
+read -p "REMOVING OLD VERSION OF DOCKER: This is recommended, are you ok with it? : " yn
+case $yn in
+    [Yy]* ) sudo apt-get remove docker docker-engine docker.io -y;;
+    [Nn]* ) echo "Ok, we're keeping your current docker version. Let's see how it goes.";;
+    * ) echo "Please choose Yy or Nn";;
+esac
+
+echo ""
+echo -e "Starting installation, please wait. This should be over in a few minutes."
+echo " "
+
+
+# uninstall old version of docker
+sudo apt-get remove docker docker-engine docker.io -y
+
+# update packages 
+sudo apt-get update -y
+
+# install linux-extra-image-*
+sudo apt-get install linux-image-extra-$(uname -r) -y
+sudo apt-get install linux-image-extra-virtual -y
+
+# update packages 
+sudo apt-get update -y
+
+# install dependencies
+sudo apt-get install apt-transport-https -y
+sudo apt-get install ca-certificates -y
+sudo apt-get install curl -y
+sudo apt-get install software-properties-common -y
+
+# add the docker GPG key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# test the key fingerprint 
+sudo apt-key fingerprint 0EBFCD88
+
+# add the repository / package 
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+# update packages 
+sudo apt-get update -y
+
+# and (finally) the actual install
+sudo apt-get install docker-ce -y
+
+# download the latest version of docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+# change the permissions 
+sudo chmod +x /usr/local/bin/docker-compose
+
+# add current user to the docker group
+sudo usermod -aG docker $USER
+
+# test that docker works ok
+docker run hello-world
+
+# verify the docker-compose version 
+docker-compose --version
+
+# install psql 
+sudo apt-get install postgresql-client
+
+# get the docker compose file 
+wget https://raw.githubusercontent.com/Nameles-Org/"$MODE"
+
+# execute compose
+sudo docker-compose -f docker-compose.yml up
