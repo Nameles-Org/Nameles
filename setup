@@ -76,14 +76,14 @@ sudo apt-get -qq install curl -y
 sudo apt-get -qq install software-properties-common -y
 
 # add the docker GPG key
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
 
 # test the key fingerprint 
 sudo apt-key fingerprint 0EBFCD88
 
 # add the repository / package 
 sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
    $(lsb_release -cs) \
    stable"
 
@@ -123,10 +123,10 @@ fi
 
 if [ "$MODE" == multi ]; then 
 
-    nohup docker-compose -f ./data-processing-module/docker-compose.yml up >> data.out 2>> data.err &
+    nohup sudo docker-compose -f ./data-processing-module/docker-compose.yml up >> data.out 2>> data.err &
     sleep 30
-    nohup docker-compose -f ./scoring-module/docker-compose.yml up >> scoring.out 2>> scoring.err &
+    nohup sudo docker-compose -f ./scoring-module/docker-compose.yml up >> scoring.out 2>> scoring.err &
     sleep 5
-    nohup docker-compose -f ./dsp-emulator/docker-compose.yml up >> dsp.out 2>> dsp.err &
+    nohup sudo docker-compose -f ./dsp-emulator/docker-compose.yml up >> dsp.out 2>> dsp.err &
 
 fi
