@@ -54,11 +54,45 @@ The scoring-module replies to the query messages sent by DSP with the confidence
 
 While the modules are not intended to be used as standalone, due to permissive licensing, you may do that if you prefer it over installing the proven system. 
 
-## 1. Before Deployment <a name="before"></a>
+### Scoring Module
 
 The [scoring-module](https://github.com/Nameles-Org/scoring-module) runs several worker threads that pull the queries from the DSP end and push the reply messages. The workers perform a single lookup in a shared hash table for each message. Therefore, the host running the scoring-module module requires minimal memory and drive. We recommend setting a worker per CPU and running latency tests with your expected throughtput load in order to dimensionate an appropriate number of processors for the host. Note that you can run several scoring modules in your system communicating with the same data processing module.
 
+### Data Processing Module
+
 The data-processing-module performs precomputations with the stream of data received from the scoring module. The data is periodically serialized to a [PostgreSQL](https://www.postgresql.org) database. The scores are computed at the end of each day. The host of this module would benefit from having a high amount of RAM and a certain number of processors in order to reduce the score computation times. We recommend at least 64GB of RAM and 4 cores.
+
+## 1. Before Deployment <a name="before"></a>
+
+### 1.1. System Requirements 
+
+In addition to docker, psql and several related depedencies, you have the option of setting up Nameles on a single machine, or 3 separate machines. For a production system, we recommend: 
+
+#### 1.1.1. Operating System 
+
+Nameles have been built and tested on Ubuntu / Debian systems. 
+
+#### 1.1.2. Single Machine 
+
+- 4 cpu cores
+- 64GB of RAM 
+
+#### 1.1.3. Multi Machine
+
+**scoring module**
+
+- 2 cpu cores
+- 4GB of RAM
+
+**data processing module**
+
+- 4 cpu cores
+- 64GB of RAM 
+
+**dsp emulator module**
+
+- 4 cpu cores
+- 8GB of RAM
 
 ### 1.1. Install docker 
 
