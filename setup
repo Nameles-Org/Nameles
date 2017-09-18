@@ -34,19 +34,15 @@ echo ""
 echo -e "Starting installation, please wait. This should be over in a few minutes."
 echo " "
 
-
-# uninstall old version of docker
-sudo apt-get remove docker docker-engine docker.io -y
-
 # update packages 
-sudo apt-get update -y
+sudo apt-get -qq update -y
 
 # install linux-extra-image-*
 sudo apt-get install linux-image-extra-$(uname -r) -y
 sudo apt-get install linux-image-extra-virtual -y
 
 # update packages 
-sudo apt-get update -y
+sudo apt-get -qq update -y
 
 # install dependencies
 sudo apt-get install apt-transport-https -y
@@ -67,7 +63,7 @@ sudo add-apt-repository \
    stable"
 
 # update packages 
-sudo apt-get update -y
+sudo apt-get -qq update -y
 
 # and (finally) the actual install
 sudo apt-get install docker-ce -y
