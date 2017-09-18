@@ -156,12 +156,18 @@ The [dsp-emulator module](https://github.com/Nameles-Org/dsp-emulator) can be us
 
 #### 3.1.1. Single Configuration Install
 
-If the machine where Nameles is running reboots or is interrupted for another reason, you can restart with:
+If the machine where Nameles is running reboots or is interrupted for another reason, you can restart with: 
 
   ```bash
-  sudo docker-compose -f docker-compose.yml up
+  sudo docker-compose -f ~/Nameles/nameles-docker-compose.yml up
   ```
 
 #### 3.1.2. Multiple Configuration Install
 
-[missing]
+Note that after each command you have to start a new shell, as the current shell has a container running in it. 
+
+  ```bash
+    sudo docker-compose -f ~/Nameles/data-docker-compose.yml up
+    sudo docker-compose -f ~/Nameles/scoring-docker-compose.yml up
+    sudo docker-compose -f ~/Nameles/emulator-docker-compose.yml up
+  ```
