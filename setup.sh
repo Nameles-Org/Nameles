@@ -1,7 +1,32 @@
 #!/bin/bash
 
-# install git
-sudo apt-get install git -y
+# getting the user choice for type of installation
+echo -e "+---------------------------------+"
+echo -e "| Welcome to Nameles Installation |"
+echo -e "+---------------------------------+"
+echo -e
+read -p "INSTALLATION MODE: 'single', 'scoring', 'processing', or 'emulator'  : " CHOICE
+case $CHOICE in
+    [single]* ) echo -e "\n Deploying single-system \n"; MODE=(Nameles/master/nameles-docker-compose.yml);;
+    [scoring]* ) echo -e "\n Deploying single-system \n"; MODE=(scoring-module/master/docker-compose.yml);;
+    [processing]* ) echo -e "\n Deploying single-system \n"; MODE=(data-processing-module/master/docker-compose.yml);;
+    [emulator]* ) echo -e "\n Deploying single-system \n"; MODE=(dsp-emulator/master/docker-compose.yml);;
+    * ) echo "You did not make an accepted choice";;
+esac
+
+echo " "
+# getting the user choice for type of installation
+read -p "REMOVING OLD VERSION OF DOCKER: This is recommended, are you ok with it? : " yn
+case $yn in
+    [Yy]* ) sudo apt-get remove docker docker-engine docker.io -y;;
+    [Nn]* ) echo "Ok, we're keeping your current docker version. Let's see how it goes.";;
+    * ) echo "Please choose Yy or Nn";;
+esac
+
+echo ""
+echo -e "Starting installation, please wait. This should be over in a few minutes."
+echo " "
+
 
 # uninstall old version of docker
 sudo apt-get remove docker docker-engine docker.io -y
@@ -55,8 +80,11 @@ docker run hello-world
 # verify the docker-compose version 
 docker-compose --version
 
+# install psql 
+sudo apt-get install postgresql-client
+
 # get the docker compose file 
-wget https://raw.githubusercontent.com/Nameles-Org/Nameles-streaming/master/nameles-docker-compose.yml
+wget https://raw.githubusercontent.com/Nameles-Org/"$MODE"
 
 # execute compose
-sudo docker-compose -f nameles-docker-compose.yml up
+sudo docker-compose -f docker-compose.yml up
