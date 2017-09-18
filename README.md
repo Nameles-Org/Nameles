@@ -117,14 +117,14 @@ Depencies will be taken care by the setup script, so you should not have to worr
 
 ## 2. Install Nameles <a name="install"></a>
 
-There are two tested options provided for deployment: 
+There easiest way to install Nameless is on a single machine using as the instructions on section 2.1 below. In total there are four options: 
 
-- 2.1. easy-install on a single machine
-- 2.2. install on multiple machines (recommended for high performance)
+- 2.1. single configuration on a single machine
+- 2.2. multiple configuration on a single machine
 
 There is an experimental option, where you can configure a docker cluster in a way where you follow the 2.1. install procedure, and then allocate resources within the docker cluster per service/module. 
 
-### 2.1 Easy-install on a single machine <a name="single"></a>
+### 2.1 Installation with Setup Script <a name="single"></a>
 
 For running Nameles on a single server on an Ubuntu or Debian system:
 
@@ -143,36 +143,8 @@ NOTE: The setup process starts by uninstalling older versions of Docker. If you 
 
 For this installation option, you need to first have a running docker cluster, otherwise you'll have to make some extra configurations later. The tested installation process is provided for a situation where a docker cluster is already running.
 
-#### 2.2.1. Create the nameles-net network
 
-Access your docker cluster (swarm)
-  
-  ```bash
-  docker network create --subnet 172.20.0.0/24 --gateway 172.20.0.1 nameles-net
-  ```
-
-#### 2.2.2. Setting Up Individual Modules 
-
-NOTE: You have to setup the modules in the following order.
-
-**1. data-processing-module**
-**2. scoring-module**
-**3. dsp-emulator**
-
-You can do it with: 
-
-    # download the setup script
-    wget https://raw.githubusercontent.com/Nameles-Org/Nameles/master/setup
-    
-    # change the permissions
-    chmod +x setup
-    
-    # run the setup script
-    ./setup
-   
-When prompted at the beginning of the setup process, make sure to choose the respect install mode for each module/machine pairing.
-
-#### 2.2.3. Check the proper working of the system accessing to the database from the host
+## 2.3. Test Installation
 
   ```bash
   psql -h 127.0.0.1 -p 5430 -U nameles
@@ -183,3 +155,13 @@ NOTE: you need to have installed the postgreSQL client as detailed in section 1.
 ## 3. Using Nameles <a name="using"></a>
 
 The [dsp-emulator module](https://github.com/Nameles-Org/dsp-emulator) can be used as an example for interfacing Nameles from your infrastructure, i.e. message formatting and zeromq port bindings. The [latency test](https://github.com/Nameles-Org/dsp-emulator/blob/master/src/dsp_latency_test.cpp) source code is implemented in C++ but a different language for which zeromq is available could be used.
+
+### 3.1. Restarting 
+
+#### 3.1.1. Single Configuration Install
+
+If the machine where Nameles is running reboots or is interrupted for another reason, you can restart with: 
+
+#### 3.1.2. Multiple Configuration Install
+
+
