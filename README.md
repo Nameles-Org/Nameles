@@ -80,7 +80,7 @@ Figure 2 the performance of Nameles once deployed. The x-axis shows the differen
 
 ### 1.1. System Requirements 
 
-In addition to docker, psql and several related depedencies, you have the option of setting up Nameles on a single machine, or 3 separate machines. For a production system, we recommend: 
+You have the option of setting up Nameles on a single machine, or 3 separate machines. For a production system, we recommend: 
 
 #### 1.1.1. Operating System 
 
@@ -108,30 +108,12 @@ Nameles have been built and tested on Ubuntu / Debian systems.
 - 4 cpu cores
 - 8GB of RAM
 
-### 1.1. Install docker 
+### 1.2. Depedencies 
 
-Docker is needed for deploying Nameles from the [pre-built docker images](https://hub.docker.com/u/apastor). We recommend using docker-compose for configuring the variables for each module as the messaging ports and number of workers.
+Depencies will be taken care by the setup script, so you should not have to worry about anything more than running ./setup as shown in the section 2.1. and 2.2. depending on your system configuration. The main depencies are: 
 
-#### 1.1.1. Install [docker-ce](https://docs.docker.com/engine/installation/#server) for your linux distribution following the instructions of the official documentantion. Then, add your linux user to the docker group for being able to run docker commands without root privileges.
-
-```bash
-sudo usermod -aG docker $USER
-```
-Test the installation running the hello-world docker image.
-```bash
-docker run hello-world
-```
-#### 1.1.2. Install [docker-compose](https://docs.docker.com/compose/install)
-```bash
-docker-compose --version
-```
-
-### 1.2. Install PSQL 
-
-In Debian/Ubuntu systems you need the postgresql-client package:
-```bash
-sudo apt-get install postgresql-client
-```
+- docker-ce
+- psql
 
 ## 2. Install Nameles <a name="install"></a>
 
@@ -154,15 +136,26 @@ NOTE: The setup process starts by uninstalling older versions of Docker. If you 
 
 ## 2.2 Multiple Machine Deployment <a name="multi"></a>
 
-##### 2.2.1. Create the nameles-net network in docker:
+#### 2.2.1. Create the nameles-net network in docker:
+  
   ```bash
   docker network create --subnet 172.20.0.0/24 --gateway 172.20.0.1 nameles-net
   ```
 
-##### 2.2.2. Run docker-compose for the three nameles modules in the following order:
-  1. data-processing-module
-  2. scoring-module
-  3. dsp-emulator
+#### 2.2.2. Run docker-compose for the three nameles modules in the following order:
+  
+**data-processing-module**
+
+  ```bash
+  sudo docker-compose -f <module-path>/docker-compose.yml up --force-recreate
+```
+**scoring-module**
+
+  ```bash
+  sudo docker-compose -f <module-path>/docker-compose.yml up --force-recreate
+```
+
+**dsp-emulator**
 
   ```bash
   sudo docker-compose -f <module-path>/docker-compose.yml up --force-recreate
