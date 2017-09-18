@@ -66,7 +66,7 @@ sudo add-apt-repository \
 sudo apt-get -qq update -y
 
 # and (finally) the actual install
-sudo apt-get install docker-ce -y
+sudo apt-get -qq install docker-ce -y
 
 # download the latest version of docker-compose
 sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
@@ -84,7 +84,7 @@ docker run hello-world
 docker-compose --version
 
 # install psql 
-sudo apt-get install postgresql-client
+sudo apt-get -qq install postgresql-client -y
 
 # get the docker compose file 
 wget https://raw.githubusercontent.com/Nameles-Org/"$MODE"
