@@ -39,7 +39,7 @@ Nameles can detect invalid traffic on:
 
 Nameles implements a highly scalable entropy measurement using Shannon entropy of the IP addresses a given site is receiving traffic from, and then assigns a normalized score to the site based on its traffic pattern.
 
-<img width='200px' src='http://nameles.org/wp-content/uploads/2016/12/Screen-Shot-2017-01-16-at-10.34.28.png'>
+<img width='200px' src='https://raw.githubusercontent.com/Nameles-Org/Nameles-logfile/master/CS_formula.png'>
 
 Entropy have been used widely in finance, intelligence, and other fields where dealing with vast amounts of data and many unknowns characterize the problem. The use of Shannon entropy has been covered in hundreds of scientific papers. Some argue that Shannon received it from Alan Turning himself, and that it was the method Turing used for cracking the Nazi code.
 
