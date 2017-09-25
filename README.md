@@ -8,6 +8,8 @@ Nameles provides an easy to deploy, scalable IVT detection and filtering solutio
 
 For a high level overview you might want to check out the [website](http://namel.es)
 
+If you have any questions or need support, try the [gitter channel](https://gitter.im/nameles-hub/Lobby)
+
 ## Table of Contents 
 
 [Detection Capability](#method)
