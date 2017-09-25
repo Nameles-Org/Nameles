@@ -10,6 +10,11 @@ For a high level overview you might want to check out the [website](http://namel
 
 If you have any questions or need support, try the [gitter channel](https://gitter.im/nameles-hub/Lobby)
 
+For two-line install: 
+
+    wget https://raw.githubusercontent.com/Nameles-Org/Nameles/master/setup
+    chmod +x setup && ./setup
+
 ## Table of Contents 
 
 [Detection Capability](#method)
