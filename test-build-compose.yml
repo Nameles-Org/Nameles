@@ -48,4 +48,4 @@ services:
     restart: "no"
     volumes:
       - /tmp:/output
-    entrypoint: bash -c "sleep 40 && /dsp-emulator/test-data-processing -dspIP '*' -rcvport 58505 -sndport 58501 -domainsFile domain-list.txt -IPsFile ip-list.txt -dbIP nameles-streaming -dbPORT 5430 -dbUSER nameles -dbNAME nameles -n_msgs 10000 && cp *.csv /output/"
+    entrypoint: bash -c "sleep 40 && /dsp-emulator/test_data_processing -dspIP '*' -rcvport 58505 -sndport 58501 -domainsFile domain-list.txt -IPsFile ip-list.txt -dbIP nameles-streaming -dbPORT 5430 -dbUSER nameles -dbNAME nameles -n_msgs 10000 && cp *.csv /output/"
