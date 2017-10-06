@@ -31,4 +31,4 @@ install:
 
 script:
   - sudo docker-compose -f test-build-compose.yml up  --force-recreate --abort-on-container-exit
-  - [[ $(wc -l </tmp/db_counts.csv) -ge 1 ]] && head /tmp/db_counts.csv
+  - bash -c "[[ $(wc -l </tmp/db_counts.csv) -ge 1 ]] && head /tmp/db_counts.csv"
