@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get install linux-image-extra-$(uname -r) -y
   - sudo apt-get install linux-image-extra-virtual -y
   - sudo apt-get update -y
-  - sudo apt-get install apt-transport-https -y 
+  - sudo apt-get install apt-transport-https -y
   - sudo apt-get install ca-certificates -y
   - sudo apt-get install curl -y
   - sudo apt-get install software-properties-common -y
@@ -20,11 +20,15 @@ before_install:
   - sudo chmod +x /usr/local/bin/docker-compose
   - sudo usermod -aG docker $USER
   - sudo apt-get install postgresql-client
-  - wget https://raw.githubusercontent.com/Nameles-Org/Nameles/master/docker-compose.yml
 
-
-# command to install dependencies
-install: 
+before_script:
   - docker run hello-world
   - docker-compose --version
-  - sudo docker-compose -f docker-compose.yml up
+
+# command to install dependencies
+install:
+  - git clone https://github.com/Nameles-Org/Nameles.git
+
+script:
+  - sudo docker-compose -f test-build-compose.yml up  --force-recreate --abort-on-container-exit
+  - [[ $(wc -l </tmp/db_counts.csv) -ge 1 ]] && head /tmp/db_counts.csv

@@ -1,0 +1,51 @@
+version: "3"
+services:
+  nameles-streaming:
+    image: apastor/nameles-streaming
+    ports:
+    - "5430:5430"
+    expose:
+      - "58510"
+    networks:
+      - default
+    restart: "no"
+    environment:
+      - RCV_PORT=58510
+      - NOTIFY_SOCKETS=scoring-module:58520
+      - DB_IP=127.0.0.1
+      - DB_USER=nameles
+      - DB_PWD=""
+      - DB_NAME=nameles
+      - NWORKERS=2
+      - MAX_MSGS=1000
+      - PYTHON_SCRIPT_NAME=/nameles-streaming/src/nameles-endofday.py
+  scoring-module:
+    image: apastor/nameles-scoring-module
+    expose:
+      - "58520"
+    networks:
+      - default
+    restart: "no"
+    environment:
+      - DSP_IP=dsp-emulator
+      - SND_PORT=58505
+      - RCV_PORT=58501
+      - FWD_PORT=58510
+      - DB_IP=nameles-streaming
+      - DB_USER=nameles
+      - DB_PWD=""
+      - DB_NAME=nameles
+      - DB_DAY=161201
+      - WORKERS=4
+      - MIN_TOTAL=250
+  dsp-emulator:
+    image: apastor/nameles-dsp-emulator
+    expose:
+      - "58501"
+      - "58505"
+    networks:
+      - default
+    restart: "no"
+    volumes:
+      - /tmp:/output
+    entrypoint: bash -c "sleep 40 && /dsp-emulator/test-data-processing -dspIP '*' -rcvport 58505 -sndport 58501 -domainsFile domain-list.txt -IPsFile ip-list.txt -dbIP nameles-streaming -dbPORT 5430 -dbUSER nameles -dbNAME nameles -n_msgs 10000 && cp *.csv /output/"
