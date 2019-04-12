@@ -67,8 +67,6 @@ Nameles is created to meet the requirements of systems dealing with hundreds of 
 Using DSP as an example, a response to a given bid request has to be received by the Ad Exchange within 100 ms. Hence, the delay introduced by Nameles is limited to few ms in order to minimize the impact in the overall bidding process delay. This ensures that also in Exchange use, the strict requirements for avoiding delays on publisher websites are avoided. 
 
 <img src='https://i.imgur.com/HkhDijN.png'>
-*
-(Figure 2) the performance of Nameles once deployed. The x-axis shows the different tested scoring request rates. The left y-axis and right y-axis show the 95-percentile filtering delay and 95-percentile memory consumption for the different scoring request rates (QPS). The line in the figure represents the average of 95-percentile values across the 5 experiments whereas the lighter color area shows the max and min 95-percentile values.
 
 ## Examples
 
