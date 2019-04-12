@@ -35,7 +35,6 @@ Nameles brings state-of-the-art invalid traffic detection, analysis and real-tim
 
 
 ## Nameles
-https://i.imgur.com/AIbUof6.gif
 Nameles provides an easy to deploy, scalable IVT detection and filtering solution that is proven to detect at a high level of accuracy ad fraud and other types of invalid traffic such as web scraping. 
 
 ## Key Features
